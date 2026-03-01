@@ -1,18 +1,11 @@
 services:
-  web-red:
-    build: ./red
-
-  web-blue:
-    build: ./blue
-
-  web-green:
-    build: ./green
+  web:
+    build: ./nginx
+    scale: 2
 
   web-lb:
     build: ./lb
     ports:
       - "80:80"
     depends_on:
-      - web-red
-      - web-blue
-      - web-green
+      - web
